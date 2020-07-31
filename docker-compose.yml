@@ -4,9 +4,24 @@ services:
     build:
       context: app/
       dockerfile: Dockerfile
+    env_file:
+        - shared.env
     environment:
-        - PORT=8000
+        - NUM_WORKERS=2
     expose:
+        # must match WEBAPP_PORT value in shared.env
         - 8000
     restart: always
     container_name: webapp
+
+  nginx:
+    build:
+        context: nginx/
+        dockerfile: Dockerfile
+    env_file:
+        - shared.env
+    ports:
+        - 8080:80
+    command: /bin/sh -c "envsubst '\$$WEBAPP_DNS, \$$WEBAPP_PORT' < /etc/nginx/nginx.template.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
+    restart: always
+    container_name: nginx
