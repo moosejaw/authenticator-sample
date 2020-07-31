@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metas -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title_text %}{% endblock %}</title>
+
+    {% block head %}
+    {% endblock %}
+
+    <!-- Assets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navigation">
+        <nav class="nav-bar" id="main-nav-bar">
+            <li class="nav-bar-contents">
+                <a class="nav-link" id="home-link" href="/">Home</a>
+                {% if request.url_rule.endpoint != 'login' %}
+                <a class="nav-link" id="login-link" href="/login">Log in</a>
+                {% endif %}
+            </li>
+        </nav>
+    </div>
+    <div class="content">
+    {% block content %}
+    {% endblock %}
+    </div>
+</body>
+</html>

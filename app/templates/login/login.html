@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title_text %}Application - Login{% endblock %}
+
+{% block content %}
+    <h1>Log in</h1>
+    <span>Please log in using the form below.</span>
+
+    <div class="login-form-container">
+        <form class="login-form">
+            <input placeholder="Username" type=text width=40 />
+            <input placeholder="Password" type=password width=40 />
+            <button>Log in</button>
+        </form>
+    </div>
+{% endblock %}
