@@ -11,6 +11,9 @@ services:
     expose:
         # must match WEBAPP_PORT value in shared.env
         - 8000
+    volumes:
+        - ./app/static:/usr/src/app/static
+        - ./app/templates:/usr/src/app/templates
     restart: always
     container_name: webapp
 
