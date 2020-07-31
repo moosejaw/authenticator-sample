@@ -5,26 +5,36 @@ services:
       context: app/
       dockerfile: Dockerfile
     env_file:
-        - shared.env
+      - shared.env
     environment:
-        - NUM_WORKERS=2
+      - NUM_WORKERS=2
     expose:
-        # must match WEBAPP_PORT value in shared.env
-        - 8000
+      # must match WEBAPP_PORT value in shared.env
+      - 8000
     volumes:
-        - ./app/static:/usr/src/app/static
-        - ./app/templates:/usr/src/app/templates
+      - ./app/static:/usr/src/app/static
+      - ./app/templates:/usr/src/app/templates
     restart: always
     container_name: webapp
 
   nginx:
     build:
-        context: nginx/
-        dockerfile: Dockerfile
+      context: nginx/
+      dockerfile: Dockerfile
     env_file:
-        - shared.env
+      - shared.env
     ports:
-        - 8080:80
+      - 8080:80
     command: /bin/sh -c "envsubst '\$$WEBAPP_DNS, \$$WEBAPP_PORT' < /etc/nginx/nginx.template.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
     restart: always
     container_name: nginx
+
+  auth-service:
+    build:
+      context: auth-service/
+      dockerfile: Dockerfile
+    expose:
+      # as specified in github repo: src/config.js
+      - 3333
+    restart: always
+    container_name: auth
