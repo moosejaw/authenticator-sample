@@ -1,0 +1,38 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+.content {
+  margin-left: 1.5%;
+}
+
+.nav-bar {
+  overflow: hidden;
+  height: 70px;
+  background-color: #333333;
+  padding: 0 10px 0 10px;
+}
+.nav-bar li {
+  display: inline;
+}
+.nav-bar a {
+  padding: 26px;
+  height: inherit;
+  text-decoration: none;
+  float: left;
+  background-color: inherit;
+  color: white;
+}
+.nav-bar a:hover {
+  background-color: #777777;
+}
+.nav-bar a:active {
+  background-color: #444444;
+}
+.nav-bar #login-link {
+  float: right;
+  color: #1AAF10;
+}
+
+/*# sourceMappingURL=style.css.map */

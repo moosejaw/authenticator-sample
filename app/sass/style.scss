@@ -1,0 +1,53 @@
+// Document-wide
+$fonts: 'Roboto', sans-serif;
+
+body {
+    font-family: $fonts;
+    margin: 0;
+}
+
+.content {
+    margin-left: 1.5%;
+}
+
+// Navigation
+$nav-bg-colour: #333333;
+$nav-active-colour: #444444;
+$nav-hover-colour: #777777;
+$login-internal-colour: #1AAF10;
+
+.nav-bar {
+    overflow: hidden;
+    height: 70px;
+    background-color: $nav-bg-colour;
+    padding: 0 10px 0 10px;
+    
+
+    li {
+        display: inline;
+    }
+
+    a {
+        padding: 26px;
+        height: inherit;
+        text-decoration: none;
+
+        float: left;
+        background-color: inherit;
+        color: white;
+    }
+
+    a:hover {
+        background-color: $nav-hover-colour;
+    }
+
+    a:active {
+        background-color: $nav-active-colour;
+    }
+
+    #login-link {
+        float: right;
+        color: $login-internal-colour;
+    }
+}
+
