@@ -1,0 +1,10 @@
+version: '3'
+services:
+  webapp:
+    build:
+      context: app/
+      dockerfile: Dockerfile
+    environment:
+        - PORT=8000
+    restart: always
+    container_name: webapp
