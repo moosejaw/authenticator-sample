@@ -18,7 +18,7 @@
         <nav class="nav-bar" id="main-nav-bar">
             <li class="nav-bar-contents">
                 <a class="nav-link" id="home-link" href="/">Home</a>
-                {% if request.url_rule.endpoint != 'login' or current_user.is_authenticated %}
+                {% if request.url_rule.endpoint != 'login' and not current_user.is_authenticated %}
                 <a class="nav-link login-link" id="login" href="/login">Log in</a>
                 {% endif %}
                 {% if current_user.is_authenticated %}
