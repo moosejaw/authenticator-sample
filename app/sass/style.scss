@@ -1,5 +1,7 @@
 // Document-wide
 $fonts: 'Roboto', sans-serif;
+$login-internal-colour: #1AAF10;
+$logout-internal-colour: #AF1A10;
 
 body {
     font-family: $fonts;
@@ -8,13 +10,16 @@ body {
 
 .content {
     margin-left: 1.5%;
+
+    #login-greeting {
+        color: $login-internal-colour;
+    }
 }
 
 // Navigation
 $nav-bg-colour: #333333;
 $nav-active-colour: #444444;
 $nav-hover-colour: #777777;
-$login-internal-colour: #1AAF10;
 
 .nav-bar {
     overflow: hidden;
@@ -45,9 +50,21 @@ $login-internal-colour: #1AAF10;
         background-color: $nav-active-colour;
     }
 
-    #login-link {
+    .login-link {
         float: right;
-        color: $login-internal-colour;
+
+        #login {
+            color: $login-internal-colour;
+        }
+        
+        #logout {
+            color: $logout-internal-colour;
+        }
     }
 }
 
+.failure-msg {
+    margin: 0.5rem 0 0.5rem 0;
+    font-size: 0.75rem;
+    color: #ff7575;
+}

@@ -6,6 +6,9 @@ body {
 .content {
   margin-left: 1.5%;
 }
+.content #login-greeting {
+  color: #1AAF10;
+}
 
 .nav-bar {
   overflow: hidden;
@@ -30,9 +33,20 @@ body {
 .nav-bar a:active {
   background-color: #444444;
 }
-.nav-bar #login-link {
+.nav-bar .login-link {
   float: right;
+}
+.nav-bar .login-link #login {
   color: #1AAF10;
+}
+.nav-bar .login-link #logout {
+  color: #AF1A10;
+}
+
+.failure-msg {
+  margin: 0.5rem 0 0.5rem 0;
+  font-size: 0.75rem;
+  color: #ff7575;
 }
 
 /*# sourceMappingURL=style.css.map */
