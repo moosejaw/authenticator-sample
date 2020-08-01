@@ -3,11 +3,10 @@ services:
   webapp:
     build:
       context: app/
-      dockerfile: Dockerfile
     env_file:
       - shared.env
     environment:
-      - NUM_WORKERS=2
+      - NUM_WORKERS=1
     expose:
       # must match WEBAPP_PORT value in shared.env
       - 8000
@@ -20,7 +19,6 @@ services:
   nginx:
     build:
       context: nginx/
-      dockerfile: Dockerfile
     env_file:
       - shared.env
     ports:
@@ -32,9 +30,9 @@ services:
   auth-service:
     build:
       context: auth-service/
-      dockerfile: Dockerfile
     expose:
       # as specified in github repo: src/config.js
+      # must also match AUTH_PORT in shared.env
       - 3333
     restart: always
     container_name: auth
