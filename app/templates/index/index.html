@@ -3,4 +3,9 @@
 
 {% block content %}
     <h1>Hello!</h1>
+
+    {% if current_user.is_authenticated %}
+    <span id="login-greeting">Hello {{ current_user.name }}! You are logged in.</span>
+    {% endif %}
+
 {% endblock %}
