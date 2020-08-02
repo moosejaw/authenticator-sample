@@ -4,6 +4,7 @@ import requests
 import markupsafe
 import flask_login
 from modules.user import User
+from modules.utils import verify_user_token
 
 
 app = flask.Flask(__name__)
@@ -26,6 +27,7 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
+    '''Renders the homepage template.'''
     return flask.render_template(os.path.join('index', 'index.html'))
 
 
@@ -69,9 +71,26 @@ def login():
             flask_login.login_user(user)
 
             # Return the user to index for now
-            flask.flash('Success! You are now logged in.')
             return flask.redirect(flask.url_for('index'))
         else:
             # Non-200 from authenticator, reload login form w/ error message
             print(f'Failed login attempt: ({res.status_code}) {res.text}')
             return render_page(failed_login=(res.status_code, res.text))
+
+
+@app.route('/logout')
+@flask_login.login_required
+def logout():
+    '''
+    Logs a user out. Their ID is directly deleted from the user_sessions
+    dictionary then the flask_login logout function is called which handles
+    everything else in the background.
+    '''
+    verify_user_token(session_users)
+
+    # Remove user from sessions dict
+    del session_users[flask_login.current_user.id]
+
+    # Then logout as normal
+    flask_login.logout_user()
+    return flask.redirect(flask.url_for('index'))
