@@ -1,7 +1,6 @@
 // Document-wide
 $fonts: 'Roboto', sans-serif;
 $login-internal-colour: #1AAF10;
-$logout-internal-colour: #AF1A10;
 
 body {
     font-family: $fonts;
@@ -52,14 +51,6 @@ $nav-hover-colour: #777777;
 
     .login-link {
         float: right;
-
-        #login {
-            color: $login-internal-colour;
-        }
-        
-        #logout {
-            color: $logout-internal-colour;
-        }
     }
 }
 

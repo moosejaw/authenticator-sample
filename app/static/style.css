@@ -36,12 +36,6 @@ body {
 .nav-bar .login-link {
   float: right;
 }
-.nav-bar .login-link #login {
-  color: #1AAF10;
-}
-.nav-bar .login-link #logout {
-  color: #AF1A10;
-}
 
 .failure-msg {
   margin: 0.5rem 0 0.5rem 0;
