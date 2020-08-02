@@ -57,3 +57,6 @@ def test_logout(client):
 
     result = client.get('/logout')
     assert greeting not in result.data
+
+    result = client.get('/logout')
+    assert b'Unauthorized' in result.data
