@@ -74,7 +74,6 @@ def login():
             return flask.redirect(flask.url_for('index'))
         else:
             # Non-200 from authenticator, reload login form w/ error message
-            print(f'Failed login attempt: ({res.status_code}) {res.text}')
             return render_page(failed_login=(res.status_code, res.text))
 
 
